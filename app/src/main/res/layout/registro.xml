@@ -39,7 +39,7 @@
         android:id="@+id/imageView3"
         android:layout_width="132dp"
         android:layout_height="149dp"
-        android:src="@drawable/camaron"
+        android:src="@mipmap/logo"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -196,11 +196,14 @@
         android:id="@+id/editTextText13"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="452dp"
         android:backgroundTint="#ECE4E4"
         android:ems="10"
         android:inputType="text"
         android:textSize="20sp"
-        tools:layout_editor_absoluteX="34dp"
-        tools:layout_editor_absoluteY="448dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.194"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
