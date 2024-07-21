@@ -32,22 +32,30 @@ class SecondActivity : AppCompatActivity() {
 
 
         button_registrarse.setOnClickListener {
-            val nombre = editNombre.text.toString()
-            val apellido = editApellido.text.toString()
-            val telefono = editTel.text.toString().toInt()
-            val correo = editCorreo.text.toString()
-            val cedula = editCedula.text.toString().toInt()
-            val password = editPass.text.toString()
+            val nombre = editNombre.text.toString().trim()
+            val apellido = editApellido.text.toString().trim()
+            val telefonoStr = editTel.text.toString().trim()
+            val correo = editCorreo.text.toString().trim()
+            val cedulaStr = editCedula.text.toString().trim()
+            val password = editPass.text.toString().trim()
 
-            lifecycleScope.launch {
-                val registroUsuario = registrarUsuario(cedula, nombre, apellido, telefono, correo, password)
-                withContext(Dispatchers.Main) {
-                    if (registroUsuario) {
-                        Toast.makeText(this@SecondActivity, "Usuario Registrado con exito!", Toast.LENGTH_LONG).show()
-                    } else {
-                        Toast.makeText(this@SecondActivity, "Error de registro", Toast.LENGTH_LONG).show()
+            // Validar que los campos que se esperan como enteros no estén vacíos
+            if (telefonoStr.isNotEmpty() && cedulaStr.isNotEmpty() && nombre.isNotEmpty() && apellido.isNotEmpty() && correo.isNotEmpty() && password.isNotEmpty()) {
+                val telefono = telefonoStr.toInt()
+                val cedula = cedulaStr.toInt()
+
+                lifecycleScope.launch {
+                    val registroUsuario = registrarUsuario(cedula, nombre, apellido, telefono, correo, password)
+                    withContext(Dispatchers.Main) {
+                        if (registroUsuario) {
+                            Toast.makeText(this@SecondActivity, "Usuario Registrado con éxito!", Toast.LENGTH_LONG).show()
+                        } else {
+                            Toast.makeText(this@SecondActivity, "Error de registro", Toast.LENGTH_LONG).show()
+                        }
                     }
                 }
+            } else {
+                Toast.makeText(this, "Por favor, complete todos los campos.", Toast.LENGTH_LONG).show()
             }
         }
 
