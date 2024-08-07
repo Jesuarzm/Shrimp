@@ -32,6 +32,10 @@ class MainActivity : ComponentActivity() {
                 withContext(Dispatchers.Main) {
                     if (existeUsuario) {
                         Toast.makeText(this@MainActivity, "Usuario encontrado", Toast.LENGTH_LONG).show()
+                        val intent = Intent(this@MainActivity, HomeActivity::class.java).apply {
+                            flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                        }
+                        startActivity(intent)
                     } else {
                         Toast.makeText(this@MainActivity, "Usuario no encontrado", Toast.LENGTH_LONG).show()
                     }
