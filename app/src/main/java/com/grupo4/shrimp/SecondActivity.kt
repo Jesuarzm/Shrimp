@@ -30,7 +30,6 @@ class SecondActivity : AppCompatActivity() {
         val editCedula = findViewById<EditText>(R.id.edit_cedula)
         val editPass = findViewById<EditText>(R.id.edit_password)
 
-
         button_registrarse.setOnClickListener {
             val nombre = editNombre.text.toString().trim()
             val apellido = editApellido.text.toString().trim()
@@ -39,18 +38,22 @@ class SecondActivity : AppCompatActivity() {
             val cedulaStr = editCedula.text.toString().trim()
             val password = editPass.text.toString().trim()
 
-            // Validar que los campos que se esperan como enteros no estén vacíos
             if (telefonoStr.isNotEmpty() && cedulaStr.isNotEmpty() && nombre.isNotEmpty() && apellido.isNotEmpty() && correo.isNotEmpty() && password.isNotEmpty()) {
                 val telefono = telefonoStr.toInt()
                 val cedula = cedulaStr.toInt()
 
                 lifecycleScope.launch {
-                    val registroUsuario = registrarUsuario(cedula, nombre, apellido, telefono, correo, password)
+                    val usuarioExiste = verificarUsuarioExiste(correo)
                     withContext(Dispatchers.Main) {
-                        if (registroUsuario) {
-                            Toast.makeText(this@SecondActivity, "Usuario Registrado con éxito!", Toast.LENGTH_LONG).show()
+                        if (usuarioExiste) {
+                            Toast.makeText(this@SecondActivity, "El usuario ya existe", Toast.LENGTH_LONG).show()
                         } else {
-                            Toast.makeText(this@SecondActivity, "Error de registro", Toast.LENGTH_LONG).show()
+                            val registroUsuario = registrarUsuario(cedula, nombre, apellido, telefono, correo, "Cliente",password, 1 )
+                            if (registroUsuario) {
+                                Toast.makeText(this@SecondActivity, "Usuario Registrado con éxito!", Toast.LENGTH_LONG).show()
+                            } else {
+                                Toast.makeText(this@SecondActivity, "Error de registro", Toast.LENGTH_LONG).show()
+                            }
                         }
                     }
                 }
@@ -61,30 +64,36 @@ class SecondActivity : AppCompatActivity() {
 
         val regresarButton: Button = findViewById(R.id.button_regresar)
         regresarButton.setOnClickListener {
-            // Redirigir a MainActivity (login layout) cuando se haga clic en el botón
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
-            // Opcional: finalizar la actividad actual si no quieres que el usuario pueda volver con el botón de atrás
             finish()
         }
-
-
     }
 
-    private suspend fun registrarUsuario(id: Int, nombre: String, apellido: String, tel: Int, correo: String, password: String): Boolean {
+
+    private suspend fun registrarUsuario(
+        id: Int,
+        nombre: String,
+        apellido: String,
+        tel: Int,
+        correo: String,
+        tipoUsuario: String,
+        password: String,
+        idDireccion: Int
+    ): Boolean {
         return withContext(Dispatchers.IO) {
             val connection = MySqlConexion.getConexion()
             if (connection != null) {
                 try {
-                    val statement = connection.prepareStatement("INSERT INTO Usuarios (IDUsuario, " +
-                            "Nombre, Apellido, Telefono, Correo, TipoUsuario, " +
-                            "Password, IDDireccion) VALUES (?, ?, ?, ?, ?, 'Cliente', ?, 1)")
+                    val statement = connection.prepareCall("{CALL pr_VerificarUsuarioExiste(?, ?, ?, ?, ?, ?, ?, ?)}")
                     statement.setInt(1, id)
                     statement.setString(2, nombre)
                     statement.setString(3, apellido)
                     statement.setInt(4, tel)
                     statement.setString(5, correo)
-                    statement.setString(6, password)
+                    statement.setString(6, tipoUsuario)
+                    statement.setString(7, password)
+                    statement.setInt(8, idDireccion)
 
                     val rowsInserted = statement.executeUpdate()
                     rowsInserted > 0
@@ -99,4 +108,27 @@ class SecondActivity : AppCompatActivity() {
             }
         }
     }
+    private suspend fun verificarUsuarioExiste(correo: String): Boolean {
+        return withContext(Dispatchers.IO) {
+            val connection = MySqlConexion.getConexion()
+            if (connection != null) {
+                try {
+                    val statement = connection.prepareCall("{CALL pr_VerificarUsuarioExiste(?)}")
+                    statement.setString(1, correo)
+                    val resultSet = statement.executeQuery()
+                    resultSet.next()
+                    resultSet.getBoolean(1)
+                } catch (e: Exception) {
+                    e.printStackTrace()
+                    false
+                } finally {
+                    connection.close()
+                }
+            } else {
+                false
+            }
+        }
+    }
+
+
 }

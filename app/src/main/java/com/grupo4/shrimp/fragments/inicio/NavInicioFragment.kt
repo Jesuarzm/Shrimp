@@ -37,11 +37,6 @@ class NavInicioFragment : Fragment(R.layout.fragment_nav_inicio), OnMapReadyCall
     override fun onViewCreated(view: android.view.View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         createMapFragment()
-
-        val locationButton: Button = view.findViewById(R.id.button_location)
-        locationButton.setOnClickListener {
-            getMyLocation()
-        }
     }
 
     override fun onMapReady(googleMap: GoogleMap) {

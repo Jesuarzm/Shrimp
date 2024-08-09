@@ -62,7 +62,7 @@ class MainActivity : ComponentActivity() {
             val connection = MySqlConexion.getConexion()
             if (connection != null) {
                 try {
-                    val statement = connection.prepareCall("{CALL VerificarUsuario(?, ?, ?)}")
+                    val statement = connection.prepareCall("{CALL pr_VerificarUsuario(?, ?, ?)}")
                     statement.setString(1, usuario)
                     statement.setString(2, password)
                     statement.registerOutParameter(3, Types.VARCHAR)

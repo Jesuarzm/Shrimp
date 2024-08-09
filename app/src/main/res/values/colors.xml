@@ -15,4 +15,6 @@
     <color name="hintColor">#BDBDBD</color>
     <color name="textColor">#FFFFFF</color>
     <color name="backgroundColor">#FF5722</color>
+    <color name="lineColor">#E0E0E0</color>
+    <color name="secondaryTextColor">#757575</color>
 </resources>
