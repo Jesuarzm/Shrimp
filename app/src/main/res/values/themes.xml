@@ -2,7 +2,7 @@
     <!-- Base application theme. -->
     int ORANGE= 0xffa500;
     p.setColor(ORANGE);
-    <style name="Theme.Shrimp" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+    <style name="Theme.Shrimp" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/purple_500</item>
         <item name="colorPrimaryVariant">@color/purple_700</item>
