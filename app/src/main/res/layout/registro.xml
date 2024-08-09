@@ -4,237 +4,150 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FF5722"
-    tools:ignore="MissingClass"
+    android:background="@color/backgroundColor"
     tools:context=".SecondActivity">
 
-    <TextView
-        android:id="@+id/textView8"
-        android:layout_width="95dp"
-        android:layout_height="26dp"
+    <ImageView
+        android:id="@+id/logoImageView"
+        android:layout_width="123dp"
+        android:layout_height="90dp"
         android:layout_marginTop="16dp"
-        android:backgroundTint="#FFFEFE"
-        android:text="Nombre:"
-        android:textColor="#FBF6F6"
-        android:textSize="20sp"
+        android:layout_marginBottom="16dp"
+        android:src="@mipmap/logo_round"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/edit_nombre"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.155"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
         android:id="@+id/edit_nombre"
-        android:layout_width="241dp"
-        android:layout_height="49dp"
-        android:layout_marginTop="44dp"
-        android:backgroundTint="#FDF7F7"
-        android:ems="10"
-        android:inputType="text"
-        android:textColor="#F4EBEB"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.288"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <ImageView
-        android:id="@+id/imageView3"
-        android:layout_width="123dp"
-        android:layout_height="90dp"
-        android:layout_marginBottom="16dp"
-
-        android:src="@mipmap/logo_round"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.481"
-        app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@mipmap/logo_foreground" />
-
-    <TextView
-        android:id="@+id/textView9"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="96dp"
-        android:text="Apellidos:"
-        android:textColor="#EADEDE"
+        android:layout_marginTop="16dp"
+        android:hint="Nombre"
+        android:backgroundTint="@color/primaryColor"
+        android:textColorHint="@color/hintColor"
+        android:textColor="@color/textColor"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.157"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/logoImageView"
+        app:layout_constraintWidth_percent="0.8" />
 
     <EditText
         android:id="@+id/edit_apellido"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="124dp"
-        android:backgroundTint="#EDE1E1"
-        android:ems="10"
-        android:inputType="text"
+        android:layout_marginTop="8dp"
+        android:hint="Apellidos"
+        android:backgroundTint="@color/primaryColor"
+        android:textColorHint="@color/hintColor"
+        android:textColor="@color/textColor"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.291"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/textView10"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="172dp"
-        android:text="Telefono:"
-        android:textColor="#FAF3F3"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.155"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/edit_nombre"
+        app:layout_constraintWidth_percent="0.8" />
 
     <EditText
         android:id="@+id/edit_telefono"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="200dp"
-        android:backgroundTint="#F3EAEA"
-        android:ems="10"
-        android:inputType="text"
+        android:layout_marginTop="8dp"
+        android:hint="Teléfono"
+        android:backgroundTint="@color/primaryColor"
+        android:textColorHint="@color/hintColor"
+        android:textColor="@color/textColor"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.28"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/textView11"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="248dp"
-        android:text="Correo:"
-        android:textColor="#F6EDED"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.142"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/edit_apellido"
+        app:layout_constraintWidth_percent="0.8" />
 
     <EditText
         android:id="@+id/edit_correo"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="276dp"
-        android:backgroundTint="#F4EFEF"
-        android:ems="10"
-        android:inputType="text"
+        android:layout_marginTop="8dp"
+        android:hint="Correo"
+        android:backgroundTint="@color/primaryColor"
+        android:textColorHint="@color/hintColor"
+        android:textColor="@color/textColor"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.291"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/textView12"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="324dp"
-        android:text="Direccion:"
-        android:textColor="#FAF4F4"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.158"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/edit_telefono"
+        app:layout_constraintWidth_percent="0.8" />
 
     <EditText
         android:id="@+id/edit_direccion"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="352dp"
-        android:backgroundTint="#F6EDED"
-        android:ems="10"
-        android:inputType="text"
+        android:layout_marginTop="8dp"
+        android:hint="Dirección"
+        android:backgroundTint="@color/primaryColor"
+        android:textColorHint="@color/hintColor"
+        android:textColor="@color/textColor"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.28"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/textView13"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="476dp"
-        android:text="Contraseña:"
-        android:textColor="#F1EDED"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.161"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <EditText
-        android:id="@+id/edit_password"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="504dp"
-        android:backgroundTint="#FAF2F2"
-        android:ems="10"
-        android:inputType="text"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.28"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/textView14"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="400dp"
-        android:text="Cedula:"
-        android:textColor="#F3EBEB"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.148"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/edit_correo"
+        app:layout_constraintWidth_percent="0.8" />
 
     <EditText
         android:id="@+id/edit_cedula"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="428dp"
-        android:backgroundTint="#ECE4E4"
-        android:ems="10"
-        android:inputType="text"
+        android:layout_marginTop="8dp"
+        android:hint="Cédula"
+        android:backgroundTint="@color/primaryColor"
+        android:textColorHint="@color/hintColor"
+        android:textColor="@color/textColor"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.28"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/edit_direccion"
+        app:layout_constraintWidth_percent="0.8" />
 
-    <Button
-        android:id="@+id/button"
-        android:layout_width="120dp"
-        android:layout_height="50dp"
-        android:text="Regresar"
-        app:layout_constraintBottom_toBottomOf="parent"
+    <EditText
+        android:id="@+id/edit_password"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:hint="Contraseña"
+        android:backgroundTint="@color/primaryColor"
+        android:textColorHint="@color/hintColor"
+        android:textColor="@color/textColor"
+        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.168"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.834" />
+        app:layout_constraintTop_toBottomOf="@id/edit_cedula"
+        app:layout_constraintWidth_percent="0.8" />
 
     <Button
         android:id="@+id/button_registrarse"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:backgroundTint="@color/orange"
         android:text="Registrarse"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.824"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.834"
-        tools:ignore="MissingConstraints" />
+        app:layout_constraintTop_toBottomOf="@id/edit_password"
+        app:layout_constraintWidth_percent="0.8" />
+
+    <Button
+        android:id="@+id/button_regresar"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:backgroundTint="@color/secondaryColor"
+        android:text="Regresar"
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/button_registrarse"
+        app:layout_constraintWidth_percent="0.8" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

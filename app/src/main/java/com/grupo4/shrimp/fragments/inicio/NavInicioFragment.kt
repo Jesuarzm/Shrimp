@@ -1,5 +1,5 @@
 // NavInicioFragment.kt
-package com.grupo4.shrimp
+package com.grupo4.shrimp.fragments.inicio
 
 import android.Manifest
 import android.annotation.SuppressLint
@@ -18,6 +18,7 @@ import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
+import com.grupo4.shrimp.R
 
 class NavInicioFragment : Fragment(R.layout.fragment_nav_inicio), OnMapReadyCallback {
 
@@ -85,7 +86,8 @@ class NavInicioFragment : Fragment(R.layout.fragment_nav_inicio), OnMapReadyCall
         } else {
             ActivityCompat.requestPermissions(requireActivity(),
                 arrayOf(Manifest.permission.ACCESS_FINE_LOCATION),
-                REQUEST_CODE_LOCATION)
+                REQUEST_CODE_LOCATION
+            )
         }
     }
 

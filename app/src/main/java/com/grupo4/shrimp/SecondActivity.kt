@@ -59,7 +59,7 @@ class SecondActivity : AppCompatActivity() {
             }
         }
 
-        val regresarButton: Button = findViewById(R.id.button)
+        val regresarButton: Button = findViewById(R.id.button_regresar)
         regresarButton.setOnClickListener {
             // Redirigir a MainActivity (login layout) cuando se haga clic en el botón
             val intent = Intent(this, MainActivity::class.java)

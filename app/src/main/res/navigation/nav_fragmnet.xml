@@ -7,17 +7,17 @@
 
     <fragment
         android:id="@+id/nav_inicio"
-        android:name="com.grupo4.shrimp.NavInicioFragment"
+        android:name="com.grupo4.shrimp.fragments.inicio.NavInicioFragment"
         android:label="Inicio"
         tools:layout="@layout/fragment_nav_inicio" />
     <fragment
         android:id="@+id/nav_servicios"
-        android:name="com.grupo4.shrimp.nav_servicios"
+        android:name="com.grupo4.shrimp.fragments.nav_servicios"
         android:label="fragment_nav_servicios"
         tools:layout="@layout/fragment_nav_servicios" />
     <fragment
         android:id="@+id/nav_cuenta"
-        android:name="com.grupo4.shrimp.nav_cuenta"
+        android:name="com.grupo4.shrimp.fragments.nav_cuenta"
         android:label="fragment_nav_cuenta"
         tools:layout="@layout/fragment_nav_cuenta" />
 </navigation>

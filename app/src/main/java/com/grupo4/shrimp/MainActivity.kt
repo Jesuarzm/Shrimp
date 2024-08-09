@@ -12,6 +12,7 @@ import com.grupo4.shrimp.data.dao.MySqlConexion
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import java.sql.Types
 
 class MainActivity : ComponentActivity() {
 
@@ -41,15 +42,15 @@ class MainActivity : ComponentActivity() {
                             }
                             startActivity(intent)
                         } else {
-                            Toast.makeText(this@MainActivity, "Usuario no encontrado", Toast.LENGTH_LONG).show()
+                            Toast.makeText(this@MainActivity, "Usuario o contraseña incorrecta", Toast.LENGTH_LONG).show()
                         }
                     }
                 }
             }
         }
 
-        val button_register: Button = findViewById(R.id.button_register)
-        button_register.setOnClickListener {
+        val buttonRegister: Button = findViewById(R.id.button_register)
+        buttonRegister.setOnClickListener {
             // Redirigir a SecondActivity cuando se haga clic en el botón
             val intent = Intent(this, SecondActivity::class.java)
             startActivity(intent)
@@ -61,11 +62,19 @@ class MainActivity : ComponentActivity() {
             val connection = MySqlConexion.getConexion()
             if (connection != null) {
                 try {
-                    val statement = connection.prepareStatement("SELECT * FROM Usuarios WHERE Correo = ? AND Password = ?")
+                    val statement = connection.prepareCall("{CALL VerificarUsuario(?, ?, ?)}")
                     statement.setString(1, usuario)
                     statement.setString(2, password)
-                    val resultSet = statement.executeQuery()
-                    resultSet.next()
+                    statement.registerOutParameter(3, Types.VARCHAR)
+
+                    statement.execute()
+                    val resultado = statement.getString(3)
+
+                    when (resultado) {
+                        "Usuario y contraseña correctos" -> true
+                        "Contraseña incorrecta", "Usuario no existe" -> false
+                        else -> false
+                    }
                 } catch (e: Exception) {
                     e.printStackTrace()
                     false
@@ -79,6 +88,7 @@ class MainActivity : ComponentActivity() {
     }
 
     private class ExecuteQueryTask : AsyncTask<String, Void, Void>() {
+        @Deprecated("Deprecated in Java")
         override fun doInBackground(vararg queries: String): Void? {
             val connection = MySqlConexion.getConexion()
             if (connection != null) {

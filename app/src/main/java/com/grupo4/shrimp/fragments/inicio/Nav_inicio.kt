@@ -1,4 +1,4 @@
-package com.grupo4.shrimp.fragments
+package com.grupo4.shrimp.fragments.inicio
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
