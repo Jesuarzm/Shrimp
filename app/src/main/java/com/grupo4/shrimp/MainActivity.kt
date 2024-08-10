@@ -36,7 +36,7 @@ class MainActivity : ComponentActivity() {
                     val existeUsuario = verificarUsuario(usuario, password)
                     withContext(Dispatchers.Main) {
                         if (existeUsuario) {
-                            Toast.makeText(this@MainActivity, "Usuario encontrado", Toast.LENGTH_LONG).show()
+                            Toast.makeText(this@MainActivity, "Inicio sesion correcto", Toast.LENGTH_LONG).show()
                             val intent = Intent(this@MainActivity, HomeActivity::class.java).apply {
                                 flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
                             }
