@@ -17,7 +17,7 @@
         tools:layout="@layout/fragment_nav_servicios" />
     <fragment
         android:id="@+id/nav_cuenta"
-        android:name="com.grupo4.shrimp.fragments.nav_cuenta"
+        android:name="com.grupo4.shrimp.fragments.cuenta.nav_cuenta"
         android:label="fragment_nav_cuenta"
         tools:layout="@layout/fragment_nav_cuenta" />
 </navigation>

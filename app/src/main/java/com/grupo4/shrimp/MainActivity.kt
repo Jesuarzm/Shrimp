@@ -13,6 +13,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import java.sql.Types
+import com.grupo4.shrimp.utils.UsuarioSingleton
 
 class MainActivity : ComponentActivity() {
 
@@ -28,7 +29,6 @@ class MainActivity : ComponentActivity() {
             val usuario = cajaUsuario.text.toString()
             val password = cajaPassword.text.toString()
 
-            // Verificar si el campo de usuario o contraseña están vacíos
             if (usuario.isEmpty() || password.isEmpty()) {
                 Toast.makeText(this@MainActivity, "Por favor ingrese su correo y contraseña", Toast.LENGTH_LONG).show()
             } else {
@@ -36,6 +36,9 @@ class MainActivity : ComponentActivity() {
                     val existeUsuario = verificarUsuario(usuario, password)
                     withContext(Dispatchers.Main) {
                         if (existeUsuario) {
+                            // Asigna el usuario a la variable global
+                            UsuarioSingleton.usuario = usuario
+
                             Toast.makeText(this@MainActivity, "Inicio sesion correcto", Toast.LENGTH_LONG).show()
                             val intent = Intent(this@MainActivity, HomeActivity::class.java).apply {
                                 flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
@@ -51,7 +54,6 @@ class MainActivity : ComponentActivity() {
 
         val buttonRegister: Button = findViewById(R.id.button_register)
         buttonRegister.setOnClickListener {
-            // Redirigir a SecondActivity cuando se haga clic en el botón
             val intent = Intent(this, SecondActivity::class.java)
             startActivity(intent)
         }

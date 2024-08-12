@@ -36,6 +36,7 @@ class nav_inicio : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_nav_inicio, container, false)
+
     }
 
     companion object {
