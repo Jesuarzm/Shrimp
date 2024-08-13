@@ -12,6 +12,7 @@ import androidx.navigation.ui.NavigationUI
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.grupo4.shrimp.R
 import com.grupo4.shrimp.data.dao.MySqlConexion
+import com.grupo4.shrimp.utils.UsuarioSingleton
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -32,10 +33,10 @@ class admin_cuenta : AppCompatActivity() {
         val etPassword = findViewById<EditText>(R.id.etPassword)
         val etIDDireccion = findViewById<EditText>(R.id.etIDDireccion)
 
-        val correoUsuario = "correo_del_usuario@example.com" // Reemplaza esto con el correo del usuario que deseas consultar
+        val correoUsuario = UsuarioSingleton.usuario // Reemplaza esto con el correo del usuario que deseas consultar
 
         lifecycleScope.launch {
-            val usuario = obtenerUsuario(correoUsuario)
+            val usuario = correoUsuario?.let { obtenerUsuario(it) }
             if (usuario != null) {
                 withContext(Dispatchers.Main) {
                     etNombre.setText(usuario.nombre)
@@ -138,7 +139,7 @@ class admin_cuenta : AppCompatActivity() {
             val connection = MySqlConexion.getConexion()
             if (connection != null) {
                 try {
-                    val statement = connection.prepareCall("{CALL pr_actualizarDireccion(?, ?, ?, ?, ?, ?)}")
+                    val statement = connection.prepareCall("{CALL pr_actualizarUsuarios(?, ?, ?, ?, ?, ?)}")
                     statement.setInt(1, usuario.idUsuario)
                     statement.setString(2, usuario.nombre)
                     statement.setString(3, usuario.apellido)
