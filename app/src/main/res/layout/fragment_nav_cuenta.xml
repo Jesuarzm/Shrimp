@@ -65,69 +65,44 @@
                 android:gravity="center"
                 android:padding="16dp">
 
-                <LinearLayout
+                <Button
+                    android:id="@+id/bottom_ayuda"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:orientation="vertical"
-                    android:gravity="center"
                     android:background="@drawable/rounded_rectangle_background"
-                    android:padding="16dp"
-                    android:layout_marginEnd="8dp">
-                    <ImageView
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
-                        android:src="@drawable/ic_help" />
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Ayuda"
-                        android:textSize="16sp"
-                        android:textColor="#FFFFFF" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:orientation="vertical"
-                    android:gravity="center"
-                    android:background="@drawable/rounded_rectangle_background"
-                    android:padding="16dp"
                     android:layout_marginEnd="8dp"
-                    android:layout_marginStart="8dp">
-                    <ImageView
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
-                        android:src="@drawable/ic_payment" />
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Pago"
-                        android:textSize="16sp"
-                        android:textColor="#FFFFFF" />
-                </LinearLayout>
+                    android:drawableTop="@drawable/ic_help"
+                    android:text="Ayuda"
+                    android:textColor="#FFFFFF"
+                    android:textSize="16sp"
+                    android:gravity="center" />
 
-                <LinearLayout
+                <Button
+                    android:id="@+id/bottom_pago"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:orientation="vertical"
-                    android:gravity="center"
                     android:background="@drawable/rounded_rectangle_background"
-                    android:padding="16dp"
-                    android:layout_marginStart="8dp">
-                    <ImageView
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
-                        android:src="@drawable/ic_activity" />
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Actividad"
-                        android:textSize="16sp"
-                        android:textColor="#FFFFFF" />
-                </LinearLayout>
+                    android:layout_marginHorizontal="8dp"
+                    android:drawableTop="@drawable/ic_payment"
+                    android:text="Pago"
+                    android:textColor="#FFFFFF"
+                    android:textSize="16sp"
+                    android:gravity="center" />
+
+                <Button
+                    android:id="@+id/bottom_actividad"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/rounded_rectangle_background"
+                    android:layout_marginStart="8dp"
+                    android:drawableTop="@drawable/ic_activity"
+                    android:text="Actividad"
+                    android:textColor="#FFFFFF"
+                    android:textSize="16sp"
+                    android:gravity="center" />
             </LinearLayout>
 
             <!-- Bottom Section -->

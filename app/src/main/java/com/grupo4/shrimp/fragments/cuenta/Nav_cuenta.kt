@@ -41,6 +41,11 @@ class nav_cuenta : Fragment() {
             val intent = Intent(activity, admin_cuenta::class.java)
             startActivity(intent)
         }
+        val btnRegistro = view.findViewById<Button>(R.id.bottom_actividad)
+        btnRegistro.setOnClickListener {
+            val intent = Intent(activity, actividad_cuenta::class.java)
+            startActivity(intent)
+        }
     }
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
