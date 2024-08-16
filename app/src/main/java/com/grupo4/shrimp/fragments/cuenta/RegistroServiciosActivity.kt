@@ -23,26 +23,29 @@ class RegistroServiciosActivity : ComponentActivity() {
         rvRegistroServicios.layoutManager = LinearLayoutManager(this)
 
         lifecycleScope.launch {
-            val registros = obtenerRegistros(1) // Reemplaza con el ID del cliente adecuado
-            val adapter = RegistroServiciosAdapter(registros) { registro ->
-                val intent = Intent(this@RegistroServiciosActivity, DetalleRegistroActivity::class.java).apply {
-                    putExtra("IDRegistro", registro.id)
-                    putExtra("Fecha", registro.fecha)
+            val registros =
+                UsuarioSingleton.usuario?.let { obtenerRegistros(it) } // Reemplaza con el ID del cliente adecuado
+            val adapter = registros?.let {
+                RegistroServiciosAdapter(it) { registro ->
+                    val intent = Intent(this@RegistroServiciosActivity, DetalleRegistroActivity::class.java).apply {
+                        putExtra("IDRegistro", registro.id)
+                        putExtra("Fecha", registro.fecha)
+                    }
+                    startActivity(intent)
                 }
-                startActivity(intent)
             }
             rvRegistroServicios.adapter = adapter
         }
     }
 
-    private suspend fun obtenerRegistros(idCliente: Int): List<RegistroServicio> {
+    private suspend fun obtenerRegistros(idCliente: String): List<RegistroServicio> {
         return withContext(Dispatchers.IO) {
             val registros = mutableListOf<RegistroServicio>()
             val connection = MySqlConexion.getConexion()
             if (connection != null) {
                 try {
-                    val statement = connection.prepareStatement("SELECT IDRegistro, Fecha FROM RegistroServicios WHERE IDCliente = ?")
-                    statement.setInt(1, idCliente)
+                    val statement = connection.prepareStatement("SELECT IDRegistro, Fecha FROM RegistroServicios, Usuarios WHERE IDCliente = IDUsuario and Correo = ?")
+                    statement.setString(1, idCliente)
                     val resultSet = statement.executeQuery()
                     while (resultSet.next()) {
                         val id = resultSet.getInt("IDRegistro")

@@ -7,18 +7,20 @@
     android:background="@color/backgroundColor"
     tools:context=".SecondActivity">
 
+    <!-- ImageView for Logo -->
     <ImageView
         android:id="@+id/logoImageView"
-        android:layout_width="123dp"
-        android:layout_height="90dp"
+        android:layout_width="111dp"
+        android:layout_height="59dp"
         android:layout_marginTop="16dp"
         android:layout_marginBottom="16dp"
         android:src="@mipmap/logo_round"
-        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toTopOf="@+id/edit_nombre"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
+    <!-- EditText for Nombre -->
     <EditText
         android:id="@+id/edit_nombre"
         android:layout_width="0dp"
@@ -34,6 +36,7 @@
         app:layout_constraintTop_toBottomOf="@id/logoImageView"
         app:layout_constraintWidth_percent="0.8" />
 
+    <!-- EditText for Apellidos -->
     <EditText
         android:id="@+id/edit_apellido"
         android:layout_width="0dp"
@@ -49,6 +52,55 @@
         app:layout_constraintTop_toBottomOf="@id/edit_nombre"
         app:layout_constraintWidth_percent="0.8" />
 
+    <!-- Spinner for País -->
+    <Spinner
+        android:id="@+id/spinner_pais"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:backgroundTint="@color/primaryColor"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/edit_apellido"
+        app:layout_constraintWidth_percent="0.8" />
+
+    <!-- Spinner for Provincia -->
+    <Spinner
+        android:id="@+id/spinner_provincia"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:backgroundTint="@color/primaryColor"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/spinner_pais"
+        app:layout_constraintWidth_percent="0.8" />
+
+    <!-- Spinner for Cantón -->
+    <Spinner
+        android:id="@+id/spinner_canton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:backgroundTint="@color/primaryColor"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/spinner_provincia"
+        app:layout_constraintWidth_percent="0.8" />
+
+    <!-- Spinner for Barrio -->
+    <Spinner
+        android:id="@+id/spinner_barrio"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:backgroundTint="@color/primaryColor"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/spinner_canton"
+        app:layout_constraintWidth_percent="0.8" />
+
+    <!-- EditText for Teléfono -->
     <EditText
         android:id="@+id/edit_telefono"
         android:layout_width="0dp"
@@ -61,9 +113,10 @@
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/edit_apellido"
+        app:layout_constraintTop_toBottomOf="@id/spinner_barrio"
         app:layout_constraintWidth_percent="0.8" />
 
+    <!-- EditText for Correo -->
     <EditText
         android:id="@+id/edit_correo"
         android:layout_width="0dp"
@@ -79,6 +132,7 @@
         app:layout_constraintTop_toBottomOf="@id/edit_telefono"
         app:layout_constraintWidth_percent="0.8" />
 
+    <!-- EditText for Dirección -->
     <EditText
         android:id="@+id/edit_direccion"
         android:layout_width="0dp"
@@ -94,6 +148,7 @@
         app:layout_constraintTop_toBottomOf="@id/edit_correo"
         app:layout_constraintWidth_percent="0.8" />
 
+    <!-- EditText for Cédula -->
     <EditText
         android:id="@+id/edit_cedula"
         android:layout_width="0dp"
@@ -109,6 +164,7 @@
         app:layout_constraintTop_toBottomOf="@id/edit_direccion"
         app:layout_constraintWidth_percent="0.8" />
 
+    <!-- EditText for Contraseña -->
     <EditText
         android:id="@+id/edit_password"
         android:layout_width="0dp"
@@ -124,6 +180,7 @@
         app:layout_constraintTop_toBottomOf="@id/edit_cedula"
         app:layout_constraintWidth_percent="0.8" />
 
+    <!-- Button for Registrarse -->
     <Button
         android:id="@+id/button_registrarse"
         android:layout_width="0dp"
@@ -137,6 +194,7 @@
         app:layout_constraintTop_toBottomOf="@id/edit_password"
         app:layout_constraintWidth_percent="0.8" />
 
+    <!-- Button for Regresar -->
     <Button
         android:id="@+id/button_regresar"
         android:layout_width="0dp"
