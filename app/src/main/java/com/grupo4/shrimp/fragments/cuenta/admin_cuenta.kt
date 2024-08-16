@@ -35,7 +35,7 @@ class admin_cuenta : AppCompatActivity() {
         val correoUsuario = UsuarioSingleton.usuario
 
         lifecycleScope.launch {
-            val usuario = correoUsuario?.let { obtenerUsuario(it.toString()) }
+            val usuario = correoUsuario?.let { obtenerUsuario(it) }
             if (usuario != null) {
                 withContext(Dispatchers.Main) {
                     etNombre.setText(usuario.nombre)

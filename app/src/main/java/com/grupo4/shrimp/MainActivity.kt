@@ -26,10 +26,10 @@ class MainActivity : ComponentActivity() {
         val cajaPassword = findViewById<EditText>(R.id.CajaPassword)
 
         buttonLogin.setOnClickListener {
-            val usuario = cajaUsuario.text.toString().toInt()
+            val usuario = cajaUsuario.text.toString()
             val password = cajaPassword.text.toString()
 
-            if (usuario.toString().isEmpty() || password.isEmpty()) {
+            if (usuario.isEmpty() || password.isEmpty()) {
                 Toast.makeText(this@MainActivity, "Por favor ingrese su correo y contraseña", Toast.LENGTH_LONG).show()
             } else {
                 lifecycleScope.launch {
@@ -59,7 +59,7 @@ class MainActivity : ComponentActivity() {
         }
     }
 
-    private suspend fun verificarUsuario(usuario: Int, password: String): Boolean {
+    private suspend fun verificarUsuario(usuario: String, password: String): Boolean {
         return withContext(Dispatchers.IO) {
             val connection = MySqlConexion.getConexion()
             if (connection != null) {
@@ -85,42 +85,6 @@ class MainActivity : ComponentActivity() {
                 }
             } else {
                 false
-            }
-        }
-    }
-
-    private class ExecuteQueryTask : AsyncTask<String, Void, Void>() {
-        @Deprecated("Deprecated in Java")
-        override fun doInBackground(vararg queries: String): Void? {
-            val connection = MySqlConexion.getConexion()
-            if (connection != null) {
-                try {
-                    val statement = connection.createStatement()
-                    val resultSet = statement.executeQuery(queries[0])
-                    while (resultSet.next()) {
-                    }
-                } catch (e: Exception) {
-                    e.printStackTrace()
-                } finally {
-                    connection.close()
-                }
-            }
-            return null
-        }
-    }
-
-    private suspend fun executeUpdate(query: String) {
-        withContext(Dispatchers.IO) {
-            val connection = MySqlConexion.getConexion()
-            if (connection != null) {
-                try {
-                    val statement = connection.createStatement()
-                    statement.executeUpdate(query)
-                } catch (e: Exception) {
-                    e.printStackTrace()
-                } finally {
-                    connection.close()
-                }
             }
         }
     }

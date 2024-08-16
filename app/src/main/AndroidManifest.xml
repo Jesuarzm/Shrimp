@@ -50,7 +50,13 @@
             <!-- No intent-filter here -->
         </activity>
         <activity
-            android:name=".fragments.cuenta.actividad_cuenta"
+            android:name=".fragments.cuenta.RegistroServiciosActivity"
+            android:exported="true"
+            android:theme="@style/Theme.Shrimp">
+            <!-- No intent-filter here -->
+        </activity>
+        <activity
+            android:name=".fragments.cuenta.DetalleRegistroActivity"
             android:exported="true"
             android:theme="@style/Theme.Shrimp">
             <!-- No intent-filter here -->

@@ -43,7 +43,7 @@ class nav_cuenta : Fragment() {
         }
         val btnRegistro = view.findViewById<Button>(R.id.bottom_actividad)
         btnRegistro.setOnClickListener {
-            val intent = Intent(activity, actividad_cuenta::class.java)
+            val intent = Intent(activity, RegistroServiciosActivity::class.java)
             startActivity(intent)
         }
     }

@@ -2,10 +2,6 @@ package com.grupo4.shrimp.fragments.cuenta
 
 import android.content.Intent
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
-import android.widget.TextView
 import androidx.activity.ComponentActivity
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -17,7 +13,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
-class actividad_cuenta : ComponentActivity() {
+class RegistroServiciosActivity : ComponentActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,9 +23,9 @@ class actividad_cuenta : ComponentActivity() {
         rvRegistroServicios.layoutManager = LinearLayoutManager(this)
 
         lifecycleScope.launch {
-            val registros = obtenerRegistros()
+            val registros = obtenerRegistros(1) // Reemplaza con el ID del cliente adecuado
             val adapter = RegistroServiciosAdapter(registros) { registro ->
-                val intent = Intent(this@actividad_cuenta, DetalleRegistroActivity::class.java).apply {
+                val intent = Intent(this@RegistroServiciosActivity, DetalleRegistroActivity::class.java).apply {
                     putExtra("IDRegistro", registro.id)
                     putExtra("Fecha", registro.fecha)
                 }
@@ -39,19 +35,19 @@ class actividad_cuenta : ComponentActivity() {
         }
     }
 
-    private suspend fun obtenerRegistros(): List<RegistroServicio> {
+    private suspend fun obtenerRegistros(idCliente: Int): List<RegistroServicio> {
         return withContext(Dispatchers.IO) {
             val registros = mutableListOf<RegistroServicio>()
             val connection = MySqlConexion.getConexion()
             if (connection != null) {
                 try {
-                    val statement = connection.prepareStatement("SELECT IDRegistro, Fecha FROM RegistroServicios, Usuarios WHERE IDCliente = IDUsuario and Correo = ?")
-                    statement.setString(1, UsuarioSingleton.usuario)  // Usar el ID del usuario actual
+                    val statement = connection.prepareStatement("SELECT IDRegistro, Fecha FROM RegistroServicios WHERE IDCliente = ?")
+                    statement.setInt(1, idCliente)
                     val resultSet = statement.executeQuery()
                     while (resultSet.next()) {
                         val id = resultSet.getInt("IDRegistro")
                         val fecha = resultSet.getString("Fecha")
-                        registros.add(RegistroServicio(id, fecha))
+                        registros.add(RegistroServicio(id, fecha, "", "", ""))
                     }
                 } catch (e: Exception) {
                     e.printStackTrace()
@@ -64,5 +60,10 @@ class actividad_cuenta : ComponentActivity() {
     }
 }
 
-data class RegistroServicio(val id: Int, val fecha: String)
-
+data class RegistroServicio(
+    val id: Int,
+    val fecha: String,
+    val nombreServicio: String,
+    val direccion: String,
+    val proveedor: String
+)
