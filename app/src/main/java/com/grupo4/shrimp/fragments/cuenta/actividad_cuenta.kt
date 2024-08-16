@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.grupo4.shrimp.R
 import com.grupo4.shrimp.data.dao.MySqlConexion
+import com.grupo4.shrimp.utils.UsuarioSingleton
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -45,8 +46,9 @@ class actividad_cuenta : ComponentActivity() {
             val connection = MySqlConexion.getConexion()
             if (connection != null) {
                 try {
-                    val statement = connection.createStatement()
-                    val resultSet = statement.executeQuery("SELECT IDRegistro, Fecha FROM RegistrosServicios")
+                    val statement = connection.prepareStatement("SELECT IDRegistro, Fecha FROM RegistroServicios WHERE IDUsuario = ?")
+                    UsuarioSingleton.usuario?.let { statement.setInt(1, it) }  // Usar el ID del usuario actual
+                    val resultSet = statement.executeQuery()
                     while (resultSet.next()) {
                         val id = resultSet.getInt("IDRegistro")
                         val fecha = resultSet.getString("Fecha")

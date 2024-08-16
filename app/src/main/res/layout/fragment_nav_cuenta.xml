@@ -67,7 +67,7 @@
 
                 <Button
                     android:id="@+id/bottom_ayuda"
-                    android:layout_width="0dp"
+                    android:layout_width="1dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:background="@drawable/rounded_rectangle_background"
@@ -93,13 +93,13 @@
 
                 <Button
                     android:id="@+id/bottom_actividad"
-                    android:layout_width="0dp"
+                    android:layout_width="20dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:background="@drawable/rounded_rectangle_background"
                     android:layout_marginStart="8dp"
                     android:drawableTop="@drawable/ic_activity"
-                    android:text="Actividad"
+                    android:text="Registro"
                     android:textColor="#FFFFFF"
                     android:textSize="16sp"
                     android:gravity="center" />

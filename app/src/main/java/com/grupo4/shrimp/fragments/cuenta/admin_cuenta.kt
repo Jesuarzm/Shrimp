@@ -32,11 +32,10 @@ class admin_cuenta : AppCompatActivity() {
         val etTipoUsuario = findViewById<EditText>(R.id.etTipoUsuario)
         val etPassword = findViewById<EditText>(R.id.etPassword)
         val etIDDireccion = findViewById<EditText>(R.id.etIDDireccion)
-
-        val correoUsuario = UsuarioSingleton.usuario // Reemplaza esto con el correo del usuario que deseas consultar
+        val correoUsuario = UsuarioSingleton.usuario
 
         lifecycleScope.launch {
-            val usuario = correoUsuario?.let { obtenerUsuario(it) }
+            val usuario = correoUsuario?.let { obtenerUsuario(it.toString()) }
             if (usuario != null) {
                 withContext(Dispatchers.Main) {
                     etNombre.setText(usuario.nombre)

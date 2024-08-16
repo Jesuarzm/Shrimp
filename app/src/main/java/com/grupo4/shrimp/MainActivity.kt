@@ -26,10 +26,10 @@ class MainActivity : ComponentActivity() {
         val cajaPassword = findViewById<EditText>(R.id.CajaPassword)
 
         buttonLogin.setOnClickListener {
-            val usuario = cajaUsuario.text.toString()
+            val usuario = cajaUsuario.text.toString().toInt()
             val password = cajaPassword.text.toString()
 
-            if (usuario.isEmpty() || password.isEmpty()) {
+            if (usuario.toString().isEmpty() || password.isEmpty()) {
                 Toast.makeText(this@MainActivity, "Por favor ingrese su correo y contraseña", Toast.LENGTH_LONG).show()
             } else {
                 lifecycleScope.launch {
@@ -59,13 +59,13 @@ class MainActivity : ComponentActivity() {
         }
     }
 
-    private suspend fun verificarUsuario(usuario: String, password: String): Boolean {
+    private suspend fun verificarUsuario(usuario: Int, password: String): Boolean {
         return withContext(Dispatchers.IO) {
             val connection = MySqlConexion.getConexion()
             if (connection != null) {
                 try {
                     val statement = connection.prepareCall("{CALL pr_VerificarUsuario(?, ?, ?)}")
-                    statement.setString(1, usuario)
+                    statement.setString(1, usuario.toString())
                     statement.setString(2, password)
                     statement.registerOutParameter(3, Types.VARCHAR)
 
