@@ -1,10 +1,13 @@
 package com.grupo4.shrimp
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import android.view.ViewGroup
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import androidx.lifecycle.lifecycleScope
 import com.grupo4.shrimp.data.dao.MySqlConexion
 import kotlinx.coroutines.Dispatchers
@@ -35,7 +38,6 @@ class SecondActivity : AppCompatActivity() {
         val spinnerProvincia = findViewById<Spinner>(R.id.spinner_provincia)
         val spinnerCanton = findViewById<Spinner>(R.id.spinner_canton)
         val spinnerBarrio = findViewById<Spinner>(R.id.spinner_barrio)
-
 
         // Listener para cargar barrios cuando se seleccione un cantón
         spinnerCanton.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
@@ -370,4 +372,5 @@ class SecondActivity : AppCompatActivity() {
             }
         }
     }
+
 }
