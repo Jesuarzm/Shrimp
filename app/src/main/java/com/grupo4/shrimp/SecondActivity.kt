@@ -356,7 +356,7 @@ class SecondActivity : AppCompatActivity() {
             val connection = MySqlConexion.getConexion()
             if (connection != null) {
                 try {
-                    val statement = connection.prepareCall("{CALL pr_VerificarUsuarioExiste(?)}")
+                    val statement = connection.prepareCall("{CALL pr_VerificarUsuario(?)}")
                     statement.setString(1, correo)
                     val resultSet = statement.executeQuery()
                     resultSet.next()
