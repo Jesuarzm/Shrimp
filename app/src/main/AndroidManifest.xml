@@ -61,6 +61,13 @@
             android:theme="@style/Theme.Shrimp">
             <!-- No intent-filter here -->
         </activity>
+
+        <activity
+            android:name=".fragments.servicios.ListaPersonasActivity"
+            android:exported="true"
+            android:theme="@style/Theme.Shrimp">
+            <!-- No intent-filter here -->
+        </activity>
     </application>
 
 </manifest>

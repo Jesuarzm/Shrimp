@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/logo_background"
-    tools:context=".fragments.nav_servicios">
+    tools:context=".fragments.servicios.nav_servicios">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -294,6 +294,7 @@
                 android:layout_marginBottom="8dp" />
 
             <Button
+                android:id="@+id/btton_verServicios"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/ver_todos_los_servicios"

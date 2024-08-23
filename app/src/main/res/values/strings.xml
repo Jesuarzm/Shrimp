@@ -10,4 +10,21 @@
     <string name="background">background</string>
     <string name="no_encuentras_lo_que_querias">¿No encuentras lo que querias?</string>
     <string name="ver_todos_los_servicios">Ver todos los servicios</string>
+    <string-array name="calificacion_array">
+        <item>Calificación: 5 estrellas</item>
+        <item>Calificación: 4 estrellas y más</item>
+        <item>Calificación: 3 estrellas y más</item>
+    </string-array>
+
+    <string-array name="distancia_array">
+        <item>Dentro de 1 km</item>
+        <item>Dentro de 5 km</item>
+        <item>Dentro de 10 km</item>
+    </string-array>
+
+    <string-array name="tipo_servicio_array">
+        <item>Electricista Doméstico</item>
+        <item>Jardinería</item>
+        <item>Plomería</item>
+    </string-array>
 </resources>

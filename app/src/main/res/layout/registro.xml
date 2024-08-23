@@ -1,222 +1,258 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/backgroundColor"
-    tools:context=".SecondActivity">
+    android:layout_height="match_parent">
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/backgroundColor"
+        android:visibility="visible"
+        tools:context=".SecondActivity"
+        tools:visibility="visible">
 
-    <!-- ImageView for Logo -->
-    <ImageView
-        android:id="@+id/logoImageView"
-        android:layout_width="111dp"
-        android:layout_height="59dp"
-        android:layout_marginTop="16dp"
-        android:src="@mipmap/logo_round"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        <!-- ImageView for Logo -->
 
-    <!-- EditText for Nombre -->
-    <EditText
-        android:id="@+id/edit_nombre"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:hint="Nombre"
-        android:backgroundTint="@color/primaryColor"
-        android:textColorHint="@color/hintColor"
-        android:textColor="@color/textColor"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/logoImageView"
-        app:layout_constraintWidth_percent="0.8" />
+        <!-- EditText for Nombre -->
 
-    <!-- EditText for Apellidos -->
-    <EditText
-        android:id="@+id/edit_apellido"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:hint="Apellidos"
-        android:backgroundTint="@color/primaryColor"
-        android:textColorHint="@color/hintColor"
-        android:textColor="@color/textColor"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/edit_nombre"
-        app:layout_constraintWidth_percent="0.8" />
+        <!-- EditText for Apellidos -->
+        <ImageView
+            android:id="@+id/logoImageView"
+            android:layout_width="111dp"
+            android:layout_height="59dp"
+            android:layout_marginTop="16dp"
+            android:src="@mipmap/logo_round"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.501"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <!-- Spinner for País -->
-    <Spinner
-        android:id="@+id/spinner_pais"
-        android:layout_width="0dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="16dp"
-        android:background="@drawable/spinner_item"
-        android:backgroundTint="@color/primaryColor"
-        android:backgroundTintMode="screen"
-        android:textColor="@color/textColor"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/edit_apellido"
-        app:layout_constraintWidth_percent="0.8" />
+        <EditText
+            android:id="@+id/edit_nombre"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:backgroundTint="@color/primaryColor"
+            android:hint="Nombre"
+            android:textColor="@color/textColor"
+            android:textColorHint="@color/hintColor"
+            android:textSize="20sp"
+            android:imeOptions="actionNext"
+            android:inputType="textPersonName"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.505"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/logoImageView"
+            app:layout_constraintWidth_percent="0.8" />
 
-    <!-- Spinner for Provincia -->
-    <Spinner
-        android:id="@+id/spinner_provincia"
-        android:layout_width="0dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="16dp"
-        android:background="@drawable/spinner_item"
-        android:backgroundTint="@color/primaryColor"
-        android:backgroundTintMode="screen"
-        android:textColor="@color/textColor"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/spinner_pais"
-        app:layout_constraintWidth_percent="0.8" />
+        <!-- Spinner for País -->
 
-    <!-- Spinner for Cantón -->
-    <Spinner
-        android:id="@+id/spinner_canton"
-        android:layout_width="0dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="16dp"
-        android:background="@drawable/spinner_item"
-        android:backgroundTint="@color/primaryColor"
-        android:backgroundTintMode="screen"
-        android:textColor="@color/textColor"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/spinner_provincia"
-        app:layout_constraintWidth_percent="0.8" />
+        <EditText
+            android:id="@+id/edit_apellido"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:backgroundTint="@color/primaryColor"
+            android:hint="Apellidos"
+            android:textColor="@color/textColor"
+            android:textColorHint="@color/hintColor"
+            android:textSize="20sp"
+            android:imeOptions="actionNext"
+            android:inputType="textPersonName"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.508"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/edit_nombre"
+            app:layout_constraintWidth_percent="0.8" />
 
-    <!-- Spinner for Barrio -->
-    <Spinner
-        android:id="@+id/spinner_barrio"
-        android:layout_width="0dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="16dp"
-        android:background="@drawable/spinner_item"
-        android:backgroundTint="@color/primaryColor"
-        android:backgroundTintMode="screen"
-        android:spinnerMode="dropdown"
-        android:textColor="@color/textColor"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/spinner_canton"
-        app:layout_constraintWidth_percent="0.8" />
+        <Spinner
+            android:id="@+id/spinner_pais"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/spinner_item"
+            android:backgroundTint="@color/primaryColor"
+            android:backgroundTintMode="screen"
+            android:textColor="@color/textColor"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/edit_apellido"
+            app:layout_constraintWidth_percent="0.8" />
 
-    <!-- EditText for Teléfono -->
-    <EditText
-        android:id="@+id/edit_telefono"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:hint="Teléfono"
-        android:backgroundTint="@color/primaryColor"
-        android:textColorHint="@color/hintColor"
-        android:textColor="@color/textColor"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/spinner_barrio"
-        app:layout_constraintWidth_percent="0.8" />
+        <!-- Spinner for Provincia -->
+        <Spinner
+            android:id="@+id/spinner_provincia"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/spinner_item"
+            android:backgroundTint="@color/primaryColor"
+            android:backgroundTintMode="screen"
+            android:textColor="@color/textColor"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/spinner_pais"
+            app:layout_constraintWidth_percent="0.8" />
 
-    <!-- EditText for Correo -->
-    <EditText
-        android:id="@+id/edit_correo"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:hint="Correo"
-        android:backgroundTint="@color/primaryColor"
-        android:textColorHint="@color/hintColor"
-        android:textColor="@color/textColor"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/edit_telefono"
-        app:layout_constraintWidth_percent="0.8" />
+        <!-- Spinner for Cantón -->
+        <Spinner
+            android:id="@+id/spinner_canton"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/spinner_item"
+            android:backgroundTint="@color/primaryColor"
+            android:backgroundTintMode="screen"
+            android:textColor="@color/textColor"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/spinner_provincia"
+            app:layout_constraintWidth_percent="0.8" />
 
-    <!-- EditText for Dirección -->
-    <EditText
-        android:id="@+id/edit_direccion"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:hint="Dirección"
-        android:backgroundTint="@color/primaryColor"
-        android:textColorHint="@color/hintColor"
-        android:textColor="@color/textColor"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/edit_correo"
-        app:layout_constraintWidth_percent="0.8" />
+        <!-- Spinner for Barrio -->
+        <Spinner
+            android:id="@+id/spinner_barrio"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/spinner_item"
+            android:backgroundTint="@color/primaryColor"
+            android:backgroundTintMode="screen"
+            android:spinnerMode="dropdown"
+            android:textColor="@color/textColor"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/spinner_canton"
+            app:layout_constraintWidth_percent="0.8" />
 
-    <!-- EditText for Cédula -->
-    <EditText
-        android:id="@+id/edit_cedula"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:hint="Cédula"
-        android:backgroundTint="@color/primaryColor"
-        android:textColorHint="@color/hintColor"
-        android:textColor="@color/textColor"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/edit_direccion"
-        app:layout_constraintWidth_percent="0.8" />
+        <!-- EditText for Teléfono -->
+        <EditText
+            android:id="@+id/edit_telefono"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:backgroundTint="@color/primaryColor"
+            android:hint="Teléfono"
+            android:textColor="@color/textColor"
+            android:textColorHint="@color/hintColor"
+            android:textSize="20sp"
+            android:imeOptions="actionNext"
+            android:inputType="textPersonName"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/spinner_barrio"
+            app:layout_constraintWidth_percent="0.8" />
 
-    <!-- EditText for Contraseña -->
-    <EditText
-        android:id="@+id/edit_password"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:hint="Contraseña"
-        android:backgroundTint="@color/primaryColor"
-        android:textColorHint="@color/hintColor"
-        android:textColor="@color/textColor"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/edit_cedula"
-        app:layout_constraintWidth_percent="0.8" />
+        <!-- EditText for Correo -->
+        <EditText
+            android:id="@+id/edit_correo"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:backgroundTint="@color/primaryColor"
+            android:hint="Correo"
+            android:textColor="@color/textColor"
+            android:textColorHint="@color/hintColor"
+            android:textSize="20sp"
+            android:imeOptions="actionNext"
+            android:inputType="textPersonName"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/edit_telefono"
+            app:layout_constraintWidth_percent="0.8" />
 
-    <!-- Button for Registrarse -->
-    <Button
-        android:id="@+id/button_registrarse"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:backgroundTint="@color/orange"
-        android:text="Registrarse"
-        android:textColor="@color/white"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/edit_password"
-        app:layout_constraintWidth_percent="0.8" />
+        <!-- EditText for Dirección -->
+        <EditText
+            android:id="@+id/edit_direccion"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:backgroundTint="@color/primaryColor"
+            android:hint="Dirección"
+            android:textColor="@color/textColor"
+            android:textColorHint="@color/hintColor"
+            android:textSize="20sp"
+            android:imeOptions="actionNext"
+            android:inputType="textPersonName"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/edit_correo"
+            app:layout_constraintWidth_percent="0.8" />
 
-    <!-- Button for Regresar -->
-    <Button
-        android:id="@+id/button_regresar"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:backgroundTint="@color/secondaryColor"
-        android:text="Regresar"
-        android:textColor="@color/white"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/button_registrarse"
-        app:layout_constraintWidth_percent="0.8" />
+        <!-- EditText for Cédula -->
+        <EditText
+            android:id="@+id/edit_cedula"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:backgroundTint="@color/primaryColor"
+            android:hint="Cédula"
+            android:textColor="@color/textColor"
+            android:textColorHint="@color/hintColor"
+            android:textSize="20sp"
+            android:imeOptions="actionNext"
+            android:inputType="textPersonName"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/edit_direccion"
+            app:layout_constraintWidth_percent="0.8" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <!-- EditText for Contraseña -->
+        <EditText
+            android:id="@+id/edit_password"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:backgroundTint="@color/primaryColor"
+            android:hint="Contraseña"
+            android:textColor="@color/textColor"
+            android:textColorHint="@color/hintColor"
+            android:textSize="20sp"
+            android:imeOptions="actionNext"
+            android:inputType="textPersonName"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/edit_cedula"
+            app:layout_constraintWidth_percent="0.8" />
+
+        <!-- Button for Registrarse -->
+
+        <!-- Button for Regresar -->
+
+        <Button
+            android:id="@+id/button_registrarse"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:backgroundTint="@color/orange"
+            android:text="Registrarse"
+            android:textColor="@color/white"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.512"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/edit_password"
+            app:layout_constraintVertical_bias="0.0"
+            app:layout_constraintWidth_percent="0.8" />
+
+        <Button
+            android:id="@+id/button_regresar"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:backgroundTint="@color/secondaryColor"
+            android:text="Regresar"
+            android:textColor="@color/white"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/button_registrarse"
+            app:layout_constraintVertical_bias="0.0"
+            app:layout_constraintWidth_percent="0.8" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

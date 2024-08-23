@@ -12,7 +12,7 @@
         tools:layout="@layout/fragment_nav_inicio" />
     <fragment
         android:id="@+id/nav_servicios"
-        android:name="com.grupo4.shrimp.fragments.nav_servicios"
+        android:name="com.grupo4.shrimp.fragments.servicios.nav_servicios"
         android:label="fragment_nav_servicios"
         tools:layout="@layout/fragment_nav_servicios" />
     <fragment
