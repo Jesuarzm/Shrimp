@@ -1,15 +1,15 @@
-// NavInicioFragment.kt
 package com.grupo4.shrimp.fragments.inicio
 
 import android.Manifest
 import android.annotation.SuppressLint
+import android.app.AlertDialog
 import android.content.pm.PackageManager
 import android.location.Location
 import android.os.Bundle
-import android.widget.Button
 import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.fragment.app.Fragment
+import com.google.android.gms.common.api.ApiException
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
 import com.google.android.gms.maps.CameraUpdateFactory
@@ -18,12 +18,18 @@ import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
+import com.google.android.libraries.places.api.Places
+import com.google.android.libraries.places.api.model.Place
+import com.google.android.libraries.places.api.net.FindCurrentPlaceRequest
+import com.google.android.libraries.places.api.net.PlacesClient
 import com.grupo4.shrimp.R
+
 
 class NavInicioFragment : Fragment(R.layout.fragment_nav_inicio), OnMapReadyCallback {
 
     private lateinit var map: GoogleMap
     private lateinit var fusedLocationClient: FusedLocationProviderClient
+    private lateinit var placesClient: PlacesClient
 
     companion object {
         const val REQUEST_CODE_LOCATION = 0
@@ -32,6 +38,8 @@ class NavInicioFragment : Fragment(R.layout.fragment_nav_inicio), OnMapReadyCall
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(requireContext())
+        Places.initialize(requireContext(), getString(R.string.google_maps_key))
+        placesClient = Places.createClient(requireContext())
     }
 
     override fun onViewCreated(view: android.view.View, savedInstanceState: Bundle?) {
@@ -41,8 +49,14 @@ class NavInicioFragment : Fragment(R.layout.fragment_nav_inicio), OnMapReadyCall
 
     override fun onMapReady(googleMap: GoogleMap) {
         map = googleMap
+        map.mapType = GoogleMap.MAP_TYPE_HYBRID
+        map.isBuildingsEnabled = true
+        map.isTrafficEnabled = true
+        map.uiSettings.isZoomControlsEnabled = true
+
         createMarker()
         enableMyLocation()
+        showNearbyPlaces() // Llama a showNearbyPlaces para mostrar los lugares cercanos
     }
 
     private fun createMarker() {
@@ -100,6 +114,54 @@ class NavInicioFragment : Fragment(R.layout.fragment_nav_inicio), OnMapReadyCall
                 }
         } else {
             requestLocationPermission()
+        }
+    }
+
+    private fun showNearbyPlaces() {
+        val placeFields = listOf(Place.Field.NAME, Place.Field.LAT_LNG, Place.Field.ADDRESS)
+        val request = FindCurrentPlaceRequest.newInstance(placeFields)
+
+        if (ActivityCompat.checkSelfPermission(requireContext(), Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
+            val placeResponse = placesClient.findCurrentPlace(request)
+            placeResponse.addOnCompleteListener { task ->
+                if (task.isSuccessful) {
+                    val response = task.result
+                    for (place in response?.placeLikelihoods ?: emptyList()) {
+                        place.place.latLng?.let {
+                            map.addMarker(
+                                MarkerOptions()
+                                    .position(it)
+                                    .title(place.place.name)
+                            )?.tag = place.place
+                        }
+                    }
+                } else {
+                    val exception = task.exception
+                    if (exception is ApiException) {
+                        Toast.makeText(requireContext(), "Error: ${exception.message}", Toast.LENGTH_LONG).show()
+                    }
+                }
+            }
+        } else {
+            // Manejar permisos aquí si no están concedidos
+        }
+    }
+
+    private fun showPlaceDetails(place: Place) {
+        AlertDialog.Builder(requireContext())
+            .setTitle(place.name)
+            .setMessage("Dirección: ${place.address}\nCoordenadas: ${place.latLng}")
+            .setPositiveButton("OK", null)
+            .show()
+    }
+
+    private fun setupMarkerClickListener() {
+        map.setOnMarkerClickListener { marker ->
+            val place = marker.tag as? Place
+            place?.let {
+                showPlaceDetails(it)
+            }
+            true
         }
     }
 

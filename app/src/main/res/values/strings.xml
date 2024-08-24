@@ -27,4 +27,5 @@
         <item>Jardinería</item>
         <item>Plomería</item>
     </string-array>
+    <string name="google_maps_key">AIzaSyAUcIIBJo7gUOQdhowEchpzZOCs0U5ETA8</string>
 </resources>
