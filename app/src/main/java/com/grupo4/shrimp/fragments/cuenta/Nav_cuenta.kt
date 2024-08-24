@@ -7,8 +7,16 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.TextView
 import androidx.navigation.fragment.findNavController
 import com.grupo4.shrimp.R
+import com.grupo4.shrimp.data.dao.MySqlConexion
+import com.grupo4.shrimp.utils.UsuarioSingleton
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
+import java.sql.Types
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -36,6 +44,21 @@ class nav_cuenta : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        val textViewM = view.findViewById<TextView>(R.id.textView_user_name)
+        val correo = UsuarioSingleton.usuario // Usa el valor de UsuarioSingleton
+
+        // Llamar a la función obtenerNombreUsuario de manera asíncrona
+        CoroutineScope(Dispatchers.Main).launch {
+            val nombreUsuario = correo?.let { obtenerNombreUsuario(it) }
+            textViewM.text = nombreUsuario ?: "Nombre no disponible"
+        }
+
+        val btnConfiguracion = view.findViewById<Button>(R.id.button_settings)
+        btnConfiguracion.setOnClickListener {
+            val intent = Intent(activity, config_cuenta::class.java)
+            startActivity(intent)
+        }
+
         val btnCuenta = view.findViewById<Button>(R.id.button_account_management)
         btnCuenta.setOnClickListener {
             val intent = Intent(activity, admin_cuenta::class.java)
@@ -50,6 +73,7 @@ class nav_cuenta : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
+
     ): View? {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_nav_cuenta, container, false)
@@ -74,4 +98,29 @@ class nav_cuenta : Fragment() {
                 }
             }
     }
+    private suspend fun obtenerNombreUsuario(correo: String): String? {
+        return withContext(Dispatchers.IO) {
+            val connection = MySqlConexion.getConexion()
+            if (connection != null) {
+                try {
+                    // Preparar la llamada al procedimiento almacenado
+                    val statement = connection.prepareCall("{CALL obtenerNombreCompletoUsuarioPorCorreo(?, ?)}")
+                    statement.setString(1, correo)
+                    statement.registerOutParameter(2, Types.VARCHAR)
+                    statement.execute()
+                    val nombreUsuario = statement.getString(2)
+
+                    nombreUsuario
+                } catch (e: Exception) {
+                    e.printStackTrace()
+                    null
+                } finally {
+                    connection.close()
+                }
+            } else {
+                null
+            }
+        }
+    }
+
 }
